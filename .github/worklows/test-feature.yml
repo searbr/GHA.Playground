@@ -1,5 +1,4 @@
 name: <<Feature>> Testing
-description: Testing out <<Feature>>
 
 on:
     push:
