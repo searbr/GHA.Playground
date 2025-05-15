@@ -1,0 +1,19 @@
+name: Action <<Feature>> Test
+description: Testing <<Feature>> on Composite Action
+
+inputs:
+  echo-input:
+    description: input to output
+    required: true
+    default: testing <<feature>>
+outputs:
+  value:
+    description: some output of <<featuer>>
+    value: ${{ steps.feature.outputs.value}}
+runs:
+  using: "composite"
+  steps:
+    - name: Echo Input as Output
+      id: feature
+      run: echo "value=${{ inputs.echo-input }}" >> $GITHUB_OUTPUT
+      shell: bash
