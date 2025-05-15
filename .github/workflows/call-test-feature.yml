@@ -1,0 +1,33 @@
+name: Reusable Workflow <<Feature>> test
+
+on:
+    workflow_call:
+        inputs:
+            echo-input:
+                description: value to output
+                required: true
+                type: string
+                default: hello
+
+        outputs:
+            value:
+                description: some output of <<feature>>
+                value: ${{ steps.feature.outputs.value}}
+jobs:
+    call-feature-test:
+        strategy:
+            max-parallel: 1
+            matrix:
+                include:
+                  - os: ubuntu-latest
+                    name: linux
+                  - os: macos-latest
+                    name: macos
+                  - os: windows-latest
+                    name: windows
+        runs-on: ${{ matrix.os }}
+        name: ${{ matrix.name }} Call Feature Test
+        steps:
+          - name: Echo Input as Output
+            id: feature
+            run: echo "value=${{ inputs.echo-input }}" >> $GITHUB_OUTPUT
