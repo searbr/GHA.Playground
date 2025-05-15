@@ -48,7 +48,7 @@ jobs:
 
     call-feature-test:
         name: ${{ matrix.name }} <<Feature>> Reuseable Workflow Test
-        uses: searbr/GHA.Playground/.github/workflows/feature.yml@main
+        uses: searbr/GHA.Playground/.github/workflows/call-test-feature.yml@main
         with:
             echo-input: test
     
