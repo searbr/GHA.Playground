@@ -26,25 +26,28 @@ jobs:
           - name: feature test step
             run: echo replace with test for feature
 
-    # action-feature-test:
-    #     strategy:
-    #         max-parallel: 1
-    #         matrix:
-    #             include:
-    #               - os: ubuntu-latest
-    #                 name: linux
-    #               - os: macos-latest
-    #                 name: macos
-    #               - os: windows-latest
-    #                 name: windows
-    #     runs-on: ${{ matrix.os }}
-    #     name: ${{ matrix.name }} <<Feature>> Action Test
-    #     steps:
-    #       - name: Action feature test step
-    #         run: echo replace with test for feature
-    #         uses: .github/actions/feature
+    action-feature-test:
+        strategy:
+            max-parallel: 1
+            matrix:
+                include:
+                  - os: ubuntu-latest
+                    name: linux
+                  - os: macos-latest
+                    name: macos
+                  - os: windows-latest
+                    name: windows
+        runs-on: ${{ matrix.os }}
+        name: ${{ matrix.name }} <<Feature>> Action Test
+        steps:
+          - name: Action feature test step
+            uses: .github/actions/feature
+            with:
+                echo-input: test
 
-    # call-feature-test:
-    #     name: ${{ matrix.name }} <<Feature>> Reuseable Workflow Test
-    #     uses: searbr/GHA.Playground/.github/workflows/feature.yml@main
+    call-feature-test:
+        name: ${{ matrix.name }} <<Feature>> Reuseable Workflow Test
+        uses: searbr/GHA.Playground/.github/workflows/feature.yml@main
+        with:
+            echo-input: test
     
