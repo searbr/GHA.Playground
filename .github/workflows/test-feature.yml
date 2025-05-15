@@ -42,7 +42,7 @@ jobs:
         steps:
           - uses: actions/checkout@v4
           - name: Action feature test step
-            uses: .github/actions/feature
+            uses: ./.github/actions/feature
             with:
                 echo-input: test
 
