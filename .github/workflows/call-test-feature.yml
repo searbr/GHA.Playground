@@ -12,7 +12,7 @@ on:
         outputs:
             value:
                 description: some output of <<feature>>
-                value: ${{ steps.feature.outputs.value}}
+                value: ${{ jobs.call-feature-test.outputs.output1}}
 jobs:
     call-feature-test:
         strategy:
@@ -27,6 +27,8 @@ jobs:
                     name: windows
         runs-on: ${{ matrix.os }}
         name: ${{ matrix.name }} Call Feature Test
+        outputs:
+            output1: ${{ steps.feature.outputs.value }}
         steps:
           - name: Echo Input as Output
             id: feature
