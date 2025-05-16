@@ -11,10 +11,10 @@ on:
 
         outputs:
             value:
-                description: some output of <<feature>>
-                value: ${{ jobs.call-feature-test.outputs.output1}}
+                description: some output of triggers
+                value: ${{ jobs.call-triggers-test.outputs.output1}}
 jobs:
-    call-feature-test:
+    call-triggers-test:
         strategy:
             max-parallel: 1
             matrix:
@@ -26,10 +26,10 @@ jobs:
                   - os: windows-latest
                     name: windows
         runs-on: ${{ matrix.os }}
-        name: ${{ matrix.name }} Call Feature Test
+        name: ${{ matrix.name }} Call Triggers Test
         outputs:
-            output1: ${{ steps.feature.outputs.value }}
+            output1: ${{ steps.triggers.outputs.value }}
         steps:
           - name: Echo Input as Output
-            id: feature
+            id: triggers
             run: echo "value=${{ inputs.echo-input }}" >> $GITHUB_OUTPUT
