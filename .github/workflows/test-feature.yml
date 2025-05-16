@@ -1,10 +1,13 @@
 name: <<Feature>> Testing
 
 on:
+    pull_request:
     push:
         branches:
           - main
           - feature
+        tags:
+          - v*.*.*
         paths-ignore:
           - README.md
 
