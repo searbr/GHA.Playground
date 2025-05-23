@@ -1,6 +1,11 @@
-# Notes
-Notes from [Creating a JavaScript action](https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-javascript-action)
+# Updates
+To build run
+```sh
+npm install
+npm run build
+```
 
+# Notes from [Creating a JavaScript action](https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-javascript-action)
 ## Commands run
 ### Create Project and Packages
 ```sh
@@ -19,8 +24,6 @@ To compile run the command below. Will generate `dist/index.js` and `dist/licens
 ```sh
 ncc build index.js --license licenses.txt
 ```
-
-
 
 ## Bullets
 - The toolkit `@actions/core` package provides an interface to the workflow commands, input and output variables, exit statuses, and debug messages.

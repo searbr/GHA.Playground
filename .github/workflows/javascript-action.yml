@@ -1,0 +1,31 @@
+name: JavaScript Action Testing
+
+on:
+    push:
+        branches:
+          - javascript
+
+jobs:
+    javscript-action:
+        strategy:
+            max-parallel: 1
+            matrix:
+                include:
+                  - os: ubuntu-latest
+                    name: linux
+                  - os: macos-latest
+                    name: macos
+                  - os: windows-latest
+                    name: windows
+        runs-on: ${{ matrix.os }}
+        name: ${{ matrix.name }} JS Action Test
+        steps:
+          - uses: actions/checkout@v4
+          - name: Hello world action step
+            id: hello
+            uses: ./javascript-action
+            with:
+              who-to-greet: 'Mona the Octocat'
+          # Use the output from the `hello` step
+          - name: Get the output time
+            run: echo "The time was ${{ steps.hello.outputs.time }}"
