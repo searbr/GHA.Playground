@@ -1,9 +1,15 @@
 # Updates
+Updated action to put it within a folder and place the `index.js` within that folder using the following command
+```sh
+ncc build src/javascript-action.js -o javascript-action
+```
+
 To build run
 ```sh
 npm install
 npm run build
 ```
+Then commit changes
 
 # Notes from [Creating a JavaScript action](https://docs.github.com/en/actions/sharing-automations/creating-actions/creating-a-javascript-action)
 ## Commands run
